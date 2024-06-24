@@ -8,7 +8,19 @@
     <i class="fa-solid fa-money-bill-trend-up"></i> Stocks
 </h1>
 
-<div class="box">
-    <p class="stock-name">@Model.Name (@Model.Symbol)</p>
-    <p><span class="dollar-tag">$</span><span class="price-tag">@Model.Price</span></p>
-</div>
+<form method="post">
+    <div class="box">
+        <p class="stock-name">@Model.Name (@Model.Symbol)</p>
+        <p><span class="dollar-tag">$</span><span class="price-tag">@Model.Price.ToString("N")</span></p>
+    </div>
+
+    <input type="hidden" name="StockSymbol" id="StockSymbol" value="@Model.Symbol" />
+    <input type="hidden" id="FinnhubToken" value="@ViewBag.FinnhubToken" />
+
+</form>
+
+@section Scripts {
+    @* import the FinnhubScript.js file to update the price *@
+    <script src="~/Scripts/FinnhubScript.js">
+    </script>
+}
