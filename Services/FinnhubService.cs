@@ -21,43 +21,75 @@ public class FinnhubService : IFinnhubService
         string stockSymbol
     )
     {
-        using (HttpClient httpClient = _httpClientFactory.CreateClient())
+        HttpClient httpClient = _httpClientFactory.CreateClient();
+
+        HttpRequestMessage httpRequestMessage = new()
         {
-            HttpRequestMessage httpRequestMessage = new()
-            {
-                RequestUri =
-                    new Uri(
-                        $"https://finnhub.io/api/v1/stock/profile2?symbol={stockSymbol}&token={_configuration["FinnhubToken"]}"),
-                Method = HttpMethod.Get
-            };
+            RequestUri =
+                new Uri(
+                    $"https://finnhub.io/api/v1/stock/profile2?symbol={stockSymbol}&token={_configuration["FinnhubToken"]}"),
+            Method = HttpMethod.Get
+        };
 
-            HttpResponseMessage httpResponseMessage =
-                await httpClient.SendAsync(httpRequestMessage);
+        HttpResponseMessage httpResponseMessage =
+            await httpClient.SendAsync(httpRequestMessage);
 
-            string responseBody =
-                new StreamReader(httpResponseMessage.Content.ReadAsStream())
-                    .ReadToEnd();
+        string responseBody =
+            new StreamReader(httpResponseMessage.Content.ReadAsStream())
+                .ReadToEnd();
 
-            Dictionary<string, object>? responseDictionary =
-                JsonSerializer
-                    .Deserialize<Dictionary<string, object>>(responseBody);
+        Dictionary<string, object>? responseDictionary =
+            JsonSerializer
+                .Deserialize<Dictionary<string, object>>(responseBody);
 
-            if (responseDictionary == null)
-                throw new InvalidOperationException(
-                    "No response from finnhub server!");
+        if (responseDictionary == null)
+            throw new InvalidOperationException(
+                "No response from finnhub server!");
 
-            if (responseDictionary.ContainsKey("error"))
-                throw new InvalidOperationException(
-                    Convert.ToString(responseDictionary["error"]));
+        if (responseDictionary.ContainsKey("error"))
+            throw new InvalidOperationException(
+                Convert.ToString(responseDictionary["error"]));
 
-            return responseDictionary;
-        }
+        return responseDictionary;
     }
 
-    public Task<Dictionary<string, object>?> GetStockPriceQuote(
+
+    public async Task<Dictionary<string, object>?> GetStockPriceQuote(
         string stockSymbol
     )
     {
-        throw new NotImplementedException();
+        HttpClient httpClient = _httpClientFactory.CreateClient();
+
+        HttpRequestMessage httpRequestMessage = new()
+        {
+            RequestUri =
+                new Uri(
+                    $"https://finnhub.io/api/v1/quote?symbol={stockSymbol}&token={_configuration["FinnhubToken"]}"),
+            Method = HttpMethod.Get
+        };
+
+        // send request
+        HttpResponseMessage httpResponseMessage = await
+            httpClient.SendAsync(httpRequestMessage);
+
+        // read response body 
+        string responseBody =
+            new StreamReader(httpResponseMessage.Content.ReadAsStream())
+                .ReadToEnd();
+
+        // convert response body (from JSON into Dictionary)
+        Dictionary<string, object>? responseDictionary =
+            JsonSerializer
+                .Deserialize<Dictionary<string, object>>(responseBody);
+
+        if (responseDictionary == null)
+            throw new InvalidOperationException(
+                "No response from finnhub server!");
+
+        if (responseDictionary.ContainsKey("error"))
+            throw new InvalidOperationException(
+                Convert.ToString(responseDictionary["error"]));
+
+        return responseDictionary;
     }
 }
