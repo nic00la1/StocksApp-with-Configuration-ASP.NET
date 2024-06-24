@@ -1,7 +1,14 @@
-﻿@{
-    ViewBag.Title = "Trade App";
+﻿@model StockTrade
+@{
+    ViewBag.Title = "Trading";
+    ViewBag.CurrentUrl = "~/Trade/Index";
 }
 
 <h1>
     <i class="fa-solid fa-money-bill-trend-up"></i> Stocks
 </h1>
+
+<div class="box">
+    <p class="stock-name">@Model.Name (@Model.Symbol)</p>
+    <p><span class="dollar-tag">$</span><span class="price-tag">@Model.Price</span></p>
+</div>
