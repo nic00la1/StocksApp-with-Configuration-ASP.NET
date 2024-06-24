@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StocksApp with Configuration ASP.NET", "StocksApp with Configuration ASP.NET\StocksApp with Configuration ASP.NET.csproj", "{75B6BD95-173D-4A47-8EDC-0A6703BF69C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{A878B7F6-9F24-4C31-B0E5-AC1080911D34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceContracts", "ServiceContracts\ServiceContracts.csproj", "{8C14BE9B-F4EB-4321-80AE-412E3EC21B71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{75B6BD95-173D-4A47-8EDC-0A6703BF69C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75B6BD95-173D-4A47-8EDC-0A6703BF69C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B6BD95-173D-4A47-8EDC-0A6703BF69C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A878B7F6-9F24-4C31-B0E5-AC1080911D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A878B7F6-9F24-4C31-B0E5-AC1080911D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A878B7F6-9F24-4C31-B0E5-AC1080911D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A878B7F6-9F24-4C31-B0E5-AC1080911D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C14BE9B-F4EB-4321-80AE-412E3EC21B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C14BE9B-F4EB-4321-80AE-412E3EC21B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C14BE9B-F4EB-4321-80AE-412E3EC21B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C14BE9B-F4EB-4321-80AE-412E3EC21B71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

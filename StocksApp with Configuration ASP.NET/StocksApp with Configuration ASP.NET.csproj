@@ -1,10 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>StocksApp_with_Configuration_ASP.NET</RootNamespace>
+    <UserSecretsId>a4c4e6ed-39db-40ef-ad60-0e6956a4de34</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceContracts\ServiceContracts.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
+  </ItemGroup>
 
 </Project>
