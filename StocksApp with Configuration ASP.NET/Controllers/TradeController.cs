@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using ServiceContracts;
 using Services;
+using StocksApp_with_Configuration_ASP.NET.Models;
 
 namespace StocksApp_with_Configuration_ASP.NET.Controllers;
 
@@ -40,7 +41,24 @@ public class TradeController : Controller
                 .GetStockPriceQuote(_tradingOptions.DefaultStockSymbol)
                 .Result;
 
+        // create model object
+        StockTrade stockTrade = new()
+        {
+            Symbol = _tradingOptions.DefaultStockSymbol
+        };
 
-        return View();
+        // Load data from FinnhubService into model object
+        if (companyProfile != null && stockPriceQuote != null)
+            stockTrade = new StockTrade()
+            {
+                Symbol = Convert.ToString(companyProfile["ticker"]),
+                Name = Convert.ToString(companyProfile["name"]),
+                Price = Convert.ToDouble(stockPriceQuote["c"].ToString())
+            };
+
+        // Send Finnhub token to view
+        ViewBag.FinnhubToken = _configuration["FinnhubToken"];
+
+        return View(stockTrade);
     }
 }
