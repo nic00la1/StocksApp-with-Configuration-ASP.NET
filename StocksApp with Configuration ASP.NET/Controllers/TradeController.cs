@@ -53,7 +53,12 @@ public class TradeController : Controller
             {
                 Symbol = Convert.ToString(companyProfile["ticker"]),
                 Name = Convert.ToString(companyProfile["name"]),
-                Price = Convert.ToDouble(stockPriceQuote["c"].ToString())
+                Price = Convert.ToDouble(stockPriceQuote["c"].ToString()),
+                Logo = Convert.ToString(companyProfile["logo"]),
+                Country = Convert.ToString(companyProfile["country"]),
+                WebUrl = Convert.ToString(companyProfile["weburl"]),
+                FinnhubIndustry =
+                    Convert.ToString(companyProfile["finnhubIndustry"])
             };
 
         // Send Finnhub token to view

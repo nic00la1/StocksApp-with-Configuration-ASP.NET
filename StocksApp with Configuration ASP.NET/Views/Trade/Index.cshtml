@@ -9,9 +9,15 @@
 </h1>
 
 <form method="post">
-    <div class="box">
-        <p class="stock-name">@Model.Name (@Model.Symbol)</p>
-        <p><span class="dollar-tag">$</span><span class="price-tag">@Model.Price.ToString("N")</span></p>
+    <div class="box flex">
+        <img src="@Model.Logo" alt="logo"/>
+        <div>
+            <p class="stock-name">@Model.Name (@Model.Symbol)</p>
+            <p><span class="dollar-tag">$</span><span class="price-tag">@Model.Price.ToString("N")</span></p>
+            <p>Country:<span class="bold">@Model.Country</span></p>
+            <p>Industry:<span class="bold">@Model.FinnhubIndustry</span></p>
+            <p>Web:<span class="bold"><a href="@Model.WebUrl" class="url-link">@Model.Name</a></span></p>
+        </div>
     </div>
 
     <input type="hidden" name="StockSymbol" id="StockSymbol" value="@Model.Symbol" />
