@@ -11,11 +11,16 @@
 
 </head>
 <body>
+<nav>
+<ul>
+    <li><a href="~/">Home</a></li>
+</ul>
+</nav>
 <div>
     @RenderBody()
 </div>
 
 
-@await RenderSectionAsync("scripts", required: false)
+@await RenderSectionAsync("scripts", required : false)
 </body>
 </html>
